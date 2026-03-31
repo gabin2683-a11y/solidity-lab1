@@ -808,26 +808,21 @@ contract HelloWorld {
     hintCode:null,
   },
   {
-    filename:'HelloNumber.sol',
+    filename:'HelloCombined.sol',
     code:`// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.26;
 
-contract HelloNumber {
-    int public number = 10;
-}`,
-    guide:[
-      { text:'<code style="color:var(--type)">int</code> 타입 변수를 확인하세요' },
-      { text:'<strong style="color:var(--cyan)">컴파일</strong> → <strong style="color:#c792ea)">배포</strong>' },
-      { text:'<code style="color:var(--green)">number</code>를 클릭해보세요' },
-      { text:'아래 <strong style="color:var(--orange)">도전과제</strong>에 도전해보세요!' },
-    ],
-    hint:'<code>int</code> 타입은 음수도 저장할 수 있습니다.<br><code>uint</code>는 양수만 가능해요.',
-    challenge:true,
-    hintCode:`// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.26;
-
-contract HelloNumber {
+contract HelloCombined {
+    string private _greeting = "Hello, World!";
     int private _number = 10;
+
+    function greet() public view returns (string memory) {
+        return _greeting;
+    }
+
+    function setGreeting(string memory newGreeting) public {
+        _greeting = newGreeting;
+    }
 
     function getNumber() public view returns (int) {
         return _number;
@@ -837,6 +832,16 @@ contract HelloNumber {
         _number = newNumber;
     }
 }`,
+    guide:[
+      { text:'<code style="color:var(--type)">greeting</code>과 <code style="color:var(--type)">number</code> 두 변수를 확인하세요' },
+      { text:'<strong style="color:var(--cyan)">컴파일</strong> → <strong style="color:#c792ea)">배포</strong>' },
+      { text:'<code style="color:var(--green)">greet()</code>와 <code style="color:var(--green)">getNumber()</code>를 호출해보세요' },
+      { text:'<code style="color:var(--orange)">setGreeting()</code>으로 인사말을 바꿔보세요' },
+      { text:'<code style="color:var(--orange)">setNumber()</code>에 음수를 넣어보세요!' },
+    ],
+    hint:'<code>private</code> 변수는 직접 읽을 수 없어서 getter 함수가 필요합니다.<br><code>int</code>는 음수도 저장 가능해요!',
+    challenge:false,
+    hintCode:null,
   },
 ];
 
